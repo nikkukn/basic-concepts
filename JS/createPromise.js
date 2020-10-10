@@ -9,6 +9,9 @@ Once client recieves response from server it start to execute the then part of t
 Since promise will be called with resolve and reject functions like 
 promise.then(resolve, reject) 
 we need to bind the resolve and reject functions explicitly in the contructor as they point to promise object.
+
+
+For more details refer the link- https://www.youtube.com/watch?v=4GpwM8FmVgQ&ab_channel=LowLevelJavaScript
 */
 
 
@@ -41,8 +44,15 @@ class CustomPromise {
     }
 
     then(callback) {
-        this.thenCallbacks.push(callback)
-        return this
+        let controlledPromise = new CustomPromise()
+        this.thenCallbacks.push([controlledPromise, this.resolve, this.catch])
+
+        if (this.state === "RESOLVED") {
+            this.resolve();
+        } else if (this.state === "REJECTED") {
+            this.reject();
+        }
+        return controlledPromise;
     }
 
     catch(callback) {
