@@ -45,7 +45,7 @@ class CustomPromise {
 
     then(callback) {
         let controlledPromise = new CustomPromise()
-        this.thenCallbacks.push([controlledPromise, this.resolve, this.catch])
+        this.thenCallbacks.push([controlledPromise, callback])
 
         if (this.state === "RESOLVED") {
             this.resolve();
@@ -56,8 +56,11 @@ class CustomPromise {
     }
 
     catch(callback) {
-        this.errorCallbacks.push(callback)
-        return this
+        // change the implementation
+        let errorState = new CustomPromise();
+        this.errorCallbacks.push([errorState, callback])
+
+        return errorState;
     }
 
     finally(callback) {
