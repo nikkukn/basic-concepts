@@ -7,7 +7,8 @@ const filteredArray = list.filter(between(3, 6)) // [4,5]
 function between(start, end) {
 
     return function (value, index) {
-        return value > start && value < end
+        if (index > start && value < end)
+            return value
     }
 
 }
