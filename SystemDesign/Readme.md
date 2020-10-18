@@ -60,3 +60,12 @@ Type of storage depends on lot of factors and the needs of your application, and
 * Scalability (How fast you need to read or write data, and these reads and writes happens concurrently or sequentially).
 * Consistency - if you protect aganist downtime using distributed storage, then how consistent is the data across your stores.
 
+
+### Latency
+**Latency** and **Throughput** are fundamental factors contributing to performance of any frontend application.
+**Latency** is simply the measure of duration. The duration for an action to complete something or produce a result. It is defined as a lag or time taken to complete an operation.
+Most common latency is called the "round trip" network request- how long does it take for the frontend end website to send query to your server and get a response back from the server.
+
+When you are loading the site, this will be fast and smooth as poosbile. Like example finding a value in array of elements is slower than finding a value in a hash-table.
+Similarly, reading from memory is much faster than reading from a disk.
+
