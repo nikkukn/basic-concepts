@@ -45,3 +45,41 @@ function requestPermission() {
                 throw new Error("Permission not granted!")
         })
 }
+
+/*
+-------- Subscribing a user with Push Manager -------------
+Once the service worker is registered and we've got permission, we can subscribe a user by
+calling registration.pushManager.subscribe();
+
+The registration.pushManager.subscribe(options) takes an option object which consist of both required and
+optional parameter.
+
+userVisibleOnly: A boolean indicating that the push subscription will only be used for messages
+which effect is made available to user.
+
+applicationServerKey: A Base-64-encoded DOMString containing a public key that the push server
+will used to authenticate your apllication server.
+
+
+-> Application server keys are unique to your server. They are combination of private and public keys.
+
+-> Private key is stored at your end and public key is exchanged with the client.
+
+-> The keys allows a push service to know which application server subscribed a user and ensure
+that it's same server that triggers the push messages to that particular user.
+
+This happens:
+--> Web app is loaded and you call subscribe(), passing your server key.
+
+--> The browser makes a network request to  a push service that will generate endpoint, associate
+the endpoint with the key and return the endpoint to the browser.
+
+--> The browser will add the endpoint to the PushSubscription object, which is returned via
+subscribe object.
+
+When you want to send message, you'll need to create an Authorization Header which contains information
+signed with your application server private key. When the push service recieves a request to
+send push message, it will validate the header by looking up the public key that is already
+linked to that particular endpoint.
+*/
+
