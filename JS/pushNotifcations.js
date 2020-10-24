@@ -83,3 +83,21 @@ send push message, it will validate the header by looking up the public key that
 linked to that particular endpoint.
 */
 
+// push listener on client side
+
+self.addEventListener('push', (event) => {
+    if (event.data) {
+        console.log("The push event has data", event.data.text())
+    }
+    else {
+        console.log("The push event has no data")
+    }
+})
+
+// service worker to tell that the work is going on untill the promise settles
+
+self.addEventListener('push', (event) => {
+    let promise = self.registation.showNotification("Push Notification");
+
+    event.waitUntil(promise);
+})
