@@ -15,7 +15,7 @@ The browser main components are:
 
 6. Javascript Engine
 
-7. Data persistance: The supported storage meachanisms are localStorage, indexDB, WebSQL and FileSystem.
+7. Data persistance: The supported storage meachanisms are localStorage, indexDB, WebSQL and FileSystem
 
 
 ## Rendering Engine.
