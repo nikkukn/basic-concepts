@@ -2,8 +2,6 @@
 Implementing simple stack and its function in Javacsript.
 */
 
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
-
 class Stack {
     // Using array to implement stack in JS.
     constructor() {
