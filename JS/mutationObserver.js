@@ -2,9 +2,10 @@
 MutationObserver is a Web API provided by modern browsers for detecting
 changes in the DOM.
 
--> MutationObserver instance is created by passing a function that would be called everytime
-a mutation has occurred. The first argument is collection of all mutations which have occured in single batch.
-Each mutation has its type and changes which have occurred.
+-> MutationObserver instance is created by passing a function that would be  
+everytime a mutation has occurred. The first argument is collection of all mutations
+which have occured in single batch. Each mutation has its type and changes which have
+occurred.
 
 */
 
