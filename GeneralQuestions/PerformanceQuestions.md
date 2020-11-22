@@ -27,3 +27,10 @@ Whenever you request `offsetTop` property of an element in JavaScript you immedi
 #### Debouncing Scroll Events
 The major problem here is that the scroll events are not timed to the visual updates of the browser, i.e. in a `requestAnimationFrame` callback, so you run the risk of performing multiple updates inside a single render frame. To solve this problem you need to debounce your scroll events. You do this by simply storing the last scroll value in a variable whenever you receive a scroll event, and then you perform your visual updates in a `requestAnimationFrame`, making use of the last known value. This means that the browser can schedule the visual updates at the correct time, and we did no more work than was absolutely necessary inside each frame.
 
+## Difference between layout, painting and composting.
+
+**Layout** - Browser determines the amount of space each element will take up and where to place it.
+
+**Painting** - The process of filling in pixels and it involves drawing out elements.
+
+**Composting** - Browser draws the element to the screen in the correct order so that the page renders correctly. 
