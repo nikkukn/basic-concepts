@@ -39,11 +39,10 @@ function requestPermission() {
         if (persmissionResult) {
             persmissionResult.then(resolve, reject)
         }
+    }).then((persmissionResult) => {
+        if (persmissionResult !== 'granted')
+            throw new Error("Permission not granted!")
     })
-        .then((persmissionResult) => {
-            if (persmissionResult !== 'granted')
-                throw new Error("Permission not granted!")
-        })
 }
 
 /*

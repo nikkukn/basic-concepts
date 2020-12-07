@@ -6,7 +6,7 @@ Sample service worker. If the service worker is supported it will register the '
 Service worker registered at root accessible to the  whole domain
 During installation it's best to load and cache some static assets.
 
-If the servixe worker get installed, the browser will spend extra CPU and memory for 
+If the service worker get installed, the browser will spend extra CPU and memory for 
 additional thread.
 Once installed for the first time it will handle caching and loading events for subsequent visits.
 */
@@ -68,10 +68,13 @@ self.addEventListener('install', function (event) {
 /*
 Here what will happen in this function
 Here is what happens in a nutshell:
-* The event.respondWith() will determine how we’ll respond to the fetch event. We pass a promise from caches.match() which looks at the request and finds if there are any cached results from any of the caches that have been created.
+* The event.respondWith() will determine how we’ll respond to the fetch event. 
+We pass a promise from caches.match() which looks at the request and finds 
+if there are any cached results from any of the caches that have been created.
 * If there is a cache, the response is retrieved.
 * Otherwise, a fetch will be performed.
-* Check if the status is 200. We also check that the response type is basic, which indicates that it’s a request from our origin. Requests to third party assets won’t be cached in this case.
+* Check if the status is 200. We also check that the response type is basic, which indicates that it’s a request from our origin.
+ Requests to third party assets won’t be cached in this case.
 * The response is added to the cache.
 
 */

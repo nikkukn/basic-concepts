@@ -48,7 +48,8 @@ Array.prototype.newFilter = function (callback, context) {
 /*
 ->A function which takes a function as an argument and a starting value
 ->The reducer function, takes four parameters, an accumulator, a current value, index, the source array
--> The starting value if passed, must be used as the initial accumulator, if no accumulator is passed then the first element of the array becomes the first element itself
+-> The starting value if passed, must be used as the initial accumulator,
+ if no accumulator is passed then the first element of the array becomes the first element itself
 -> The execution context of the callback becomes that of the accumulator.
 
  * The callback gets 4 arguments
@@ -99,11 +100,17 @@ The bind() method creates a new function that, when called, has its this keyword
 value, with a given sequence of arguments preceding any provided when the new function is called.
 
 
-* The bind method is attached on the Function prototype, and is used to pass an execution context to the function
-* The bind method takes 2 arguments, one being the context, and an optional parameter of an array of arguments
+* The bind method is attached on the Function prototype, and is used to pass an execution
+  context to the function
+* The bind method takes 2 arguments, one being the context, and an optional parameter of 
+  an array of arguments
 * Both these cases should work
-* Hence the bind method should return a new function in which the arguments must be concatenated and applied using Function.apply
-* Partially applied arguments, should also work, eg. if a method takes 2 arguments, the following should be valid
+* Hence the bind method should return a new function in which the arguments must 
+  be concatenated and
+  applied using Function.apply
+* Partially applied arguments, should also work, eg. if a method takes 2 arguments,
+   the following
+   should be valid
 */
 
 Function.prototype.newBind = function (context) {

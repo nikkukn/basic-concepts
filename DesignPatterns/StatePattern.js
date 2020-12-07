@@ -64,3 +64,22 @@ class GreenLight extends Light {
         return 'Walk';
     }
 }
+
+
+
+// usage
+const trafficLight = new TrafficLight();
+
+console.log(trafficLight.sign()); // 'GO'
+trafficLight.change();
+
+console.log(trafficLight.sign()); // 'STOP'
+trafficLight.change();
+
+console.log(trafficLight.sign()); // 'STEADY'
+trafficLight.change();
+
+console.log(trafficLight.sign()); // 'GO'
+trafficLight.change();
+
+console.log(trafficLight.sign()); // 'STOP'
