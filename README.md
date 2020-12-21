@@ -1,2 +1,2 @@
 # About
-This is a collection of some important concepts that a frontend developer must know.
+This is a collection of some important concepts that will be helpful for a Frontend Developer.
