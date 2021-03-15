@@ -8,9 +8,6 @@ class Node {
 }
 */
 
-const { maxHeaderSize } = require("http");
-
-
 function height(root) {
 
     if (root === null)
