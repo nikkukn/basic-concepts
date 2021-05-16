@@ -60,8 +60,70 @@ class Trie {
         return false;
     }
 
+    hasNoChildren(currentNode) {
+        for(let i=0;i<currentNode.children.length;i++){
+            if(currentNode.children[i] === null){
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
+
+    deleteHelper(key, currentNode, length, level) {
+        let deletedSelf = false;
+
+        if(currentNode === null) {
+            console.log("Key does not exist!")
+            return deletedSelf; 
+        }
+
+        if(level === length) {
+            // if there are no nodes ahead of this node than we can easily delete this node.
+            if(this.hasNoChildren(currentNode)){
+                currentNode = null;
+                deletedSelf = true;
+            }else {
+                // when the node has leafs ahead of it than we can simply unmark the leaf
+                currentNode.unMarkAsLeaf()
+                deletedSelf = false;
+            }
+        }else {
+            let childNode = currentNode.children[this.getIndex(level)]
+            let childDeleted = this.deleteHelper(key, currentNode, length, level+1)
+
+            if(childDeleted){
+                currentNode.children[this.getIndex(key[level])] = null;
+                //If currentNode is leaf node that means currentNode is part of another key
+                //and hence we can not delete this node and it's parent path nodes
+
+                if(currentNode.isEndWord){
+                    deletedSelf = false;
+                }
+                else if(this.hasNoChildren(currentNode) === false){
+                //If childNode is deleted but if currentNode has more children then currentNode must be part of another key
+                //So, we cannot delete currentNode
+                    deletedSelf = false;
+                }else {
+                    currentNode = null;
+                    deletedSelf = true;
+                }
+            }
+            else {
+                deletedSelf = false;
+            }
+        }
+        return deletedSelf;
+
+    }
+
     delete(key) {
-        return;
+        if(key=== null || this.root === key){
+            console.log("None key or empty trie error");
+            return false;
+        }
+
+        this.deleteHelper(key, this.root, key.length, 0)
     }
 
 
