@@ -12,10 +12,14 @@ class Node {
     this.size = 0;
     }
 
+    addElement() {
+        // define later
+    }
+
     findMiddleElement() {
         let current;
         let slowPtr, fastPtr;
-        if(this.head === null) {
+        if(this.head === null) { // empty list condition
             return this.head;
         }else {
             current = this.head;
