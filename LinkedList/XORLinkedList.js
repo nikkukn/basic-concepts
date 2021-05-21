@@ -22,6 +22,8 @@ class LinkedList {
         let newNode = new Node(1);
         newNode.npx = XOR(this.head, null);
         // logic to update the next pointer of the previous element once the next element is being set.
+
+        // (null ^ 1)^ null will nullify null and the output will be 1
         if(this.head !== null) {
             let next = XOR(this.head.npx, null);
             this.head.npx = XOR(newNode, next)
