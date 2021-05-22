@@ -41,4 +41,45 @@ class Graph {
             node2.edges.push(node1)
         return `An edge between ${node1.value} and ${node2.value} was added`;
     }
+
+    dfs(graph, startValue) {
+        let startNode = graph.getNode(startValue);
+        let visitedNodesHash = graph.nodes.reduce((accumulator, currentNode)=> {
+            accumulator[currentNode.value] = false;
+            return accumulator;
+        }, {})
+
+        const exploreNode = (node) => {
+            if(visitedNodesHash[node.value]) return 
+            console.log(`${node.value} => `)
+
+            visitedNodesHash[node.value] = true
+            node.edges.forEach((edge)=> exploreNode(edge))
+        }
+        exploreNode(startNode);
+    }
+
+    bfs(graph, startValue) {
+        let startNode = graph.getNode(startValue);
+        let visitedNodesHash = graph.nodes.reduce((accumulator, currentNode) => {
+            accumulator[currentNode.value] = false
+            return accumulator
+        }, {})
+
+        const queue = new Queue();
+        queue.enqueue(startNode);
+        while(!queue.isEmpty()) {
+            let currentNode = queue.dequeue();
+
+            if(!visitedNodesHash[currentNode.value]){
+                console.log(`${currentNode.value} => `)
+                visitedNodesHash[currentNode.value] = true;
+            }
+            currentNode.edges.forEach((edge)=> {
+                if(!visitedNodesHash[edge.value])
+                    queue.enqueue(edge);
+            })
+        }
+
+    }
 }
