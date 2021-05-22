@@ -19,3 +19,5 @@ function binarySearch(array, item) {
     }
     return false;
 }
+
+// Time complexity - O(log n)
