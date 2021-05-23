@@ -1,0 +1,59 @@
+/* A CSS pseudo-element is used to style specified parts of an element.
+
+For example, it can be used to:
+
+Style the first letter, or line, of an element
+Insert content before, or after, the content of an element
+ */
+
+
+ /* The ::first-line pseudo-element is used to add a special style to the first line of a text. */
+ p::first-line {
+    color: #ff0000;
+    font-variant: small-caps;
+  }
+
+
+  /* The ::first-letter pseudo-element is used to add a special style to the first letter of a text. */
+
+  p::first-letter {
+    color: #ff0000;
+    font-size: xx-large;
+  }
+
+  
+  /* Pseudo-elements can be combined with CSS classes:  */
+  p.intro::first-letter {
+    color: #ff0000;
+    font-size: 200%;
+  }
+
+
+  /* The ::before pseudo-element can be used to insert some content before the content of an element.
+ */
+
+ h1::before {
+    content: url(smiley.gif);
+  }
+
+
+  /* The ::after pseudo-element can be used to insert some content after the content of an element. */
+  h1::after {
+    content: url(smiley.gif);
+  }
+
+
+  /* The ::marker pseudo-element selects the markers of list items. */
+  ::marker {
+    color: red;
+    font-size: 23px;
+  }
+
+
+  /* The ::selection pseudo-element matches the portion of an element that is selected by a user.
+ */
+
+ ::selection {
+    color: red;
+    background: yellow;
+  }
