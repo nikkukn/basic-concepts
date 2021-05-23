@@ -1,0 +1,79 @@
+/* display: grid 
+defines grid as the container
+ */
+
+.container {
+    display: grid;
+    grid-template-rows: 25% 100px auto;
+    grid-template-columns: 40px 50px auto 50px 40px;
+}
+
+/* repeting columns property */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 20px [col-start]);
+}
+
+/* grid template columns as a matter of free space */
+.item {
+    grid-column-start: col-start 2;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* grid-template-areas - Defines grid templates which are defined using grid-area
+ */
+/* grid-area: name grid area */
+ .item-a {
+    grid-area: header;
+  }
+  .item-b {
+    grid-area: main;
+  }
+  .item-c {
+    grid-area: sidebar;
+  }
+  .item-d {
+    grid-area: footer;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header header header"
+      "main main . sidebar"
+      "footer footer footer footer";
+  }
+
+/*  align-content: center;  aligns grid vertically center */
+.grid-container {
+    display: grid;
+    grid-column-gap: 50px;
+    grid-row-gap: 100px;
+    align-content: center;  
+}
+/* define grid column start and end */
+
+.item {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.item {
+    grid-column: 1 / 4;
+}
+
+.item1 {
+    grid-column: 1 / span 3;
+}
+/* grid-column: start from 1 row and 2 column, ends on 5th row and ends on 6th column */
+.item8 {
+    grid-column: 1 / 2 / 5 / 6;
+}
+
+.item9 {
+    grid-column: 2 / 1 / span 2 / span 3;
+}

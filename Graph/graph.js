@@ -80,6 +80,5 @@ class Graph {
                     queue.enqueue(edge);
             })
         }
-
     }
 }
