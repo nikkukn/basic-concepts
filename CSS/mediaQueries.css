@@ -1,0 +1,48 @@
+/* trying simple media queries and getting used to its syntax */
+
+@media only screen and (max-width:640px) {
+    body {
+        background-color: lightblue;
+    }
+}
+
+/* changing classes for mobile phones */
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+
+/* for mobile */
+@media only screen and (max-width:640px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+/* different device types */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
+
+
+
+/* Different orientation of the devices */
+@media only screen and (orientation: landscape) {
+    body {
+        background-color: lightblue;
+    }
+}
+
