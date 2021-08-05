@@ -17,3 +17,13 @@ const greatestCommonDivisor = (a,b) => {
 
     return greatestCommonDivisor;
 }
+
+
+// another approach for gcd
+// IMPORTANT - we are interchanging and a and b every time.
+const greatestCommonDivisorWithRecurssion = (a,b) => {
+    if(b===0) return a;
+    else {
+        return greatestCommonDivisorWithRecurssion(b, a%b)
+    }
+}
