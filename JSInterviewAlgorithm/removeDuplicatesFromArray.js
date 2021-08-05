@@ -8,3 +8,10 @@ const removeDuplicate = (arr) => {
         return acc;
     }, [])
 }
+
+// another method 
+const removeDuplicateArr = (arr)=> {
+    let setArray = new Set(arr);
+
+    return Array.from(setArray);
+}
