@@ -7,7 +7,7 @@ function stringify(data) {
     }
 
     if(typeof data ===  'string'){
-        return `"${data}"`;
+        return `'${data}'`;
     }
 
     if(typeof data === 'function'){
@@ -15,15 +15,15 @@ function stringify(data) {
     }
 
     if(data!==data){
-        return "null";
+        return 'null';
     }
 
     if(data === Infinity){
-        return "null"
+        return 'null'
     }
 
     if(data === -Infinity){
-        return "null";
+        return 'null';
     }
 
     if(typeof data === 'number'){
@@ -47,12 +47,12 @@ function stringify(data) {
     }
 
     if(data instanceof Date){
-        return `"${data.toISOString()}"`;
+        return `'${data.toISOString()}'`;
     }
 
     if(Array.isArray(data)){
         const tempData = data.map((ele)=> stringify(ele));
-        return `[${tempData.join(",")}]`
+        return `[${tempData.join(',')}]`
     }
 
     if(typeof data === 'object'){
@@ -61,10 +61,10 @@ function stringify(data) {
             return acc;
         }
 
-        acc.push(`"${key}": ${stringify(value)}`);
+        acc.push(`'${key}': ${stringify(value)}`);
         return acc;
       },[]);
 
-      return `{${arr.join(",")}}`;
+      return `{${arr.join(',')}}`;
   }
 } 
