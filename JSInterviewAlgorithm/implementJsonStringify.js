@@ -61,7 +61,7 @@ function stringify(data) {
             return acc;
         }
 
-        acc.push(`'${key}': ${stringify(value)}`);
+        acc.push(`'${key}':${stringify(value)}`);
         return acc;
       },[]);
 
