@@ -1,6 +1,6 @@
 
 
-function promise(promises){
+function promiseRace(promises){
     let isOnePromiseResolved = false;
     return new Promise((resolve, reject)=> {
         for(let i=0;i<promises.length;i++){
