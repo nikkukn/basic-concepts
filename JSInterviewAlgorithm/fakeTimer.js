@@ -1,10 +1,8 @@
 class FakeTimer{
-    constructor(){
-        this.tasks = [];
-        this.nextTimeoutId = 0;
-        this.time = 0;
-        this.refs = new Map()
-    }
+    tasks = [];
+    nextTimeoutId = 0;
+    time = 0;
+    refs = new Map();
 
     install(){
         if(this.installed){
@@ -23,10 +21,10 @@ class FakeTimer{
     }
 
     uninstall() {
-        if(!this.installed){
-            throw new Error("Attemping to uninstall a FakeTimer that has not been installed.");
+        if (!this.installed) {
+            throw new Error("Attemping to uninstall a FakeTimer that has not been installed.")
         }
-
+    
         this.installed = false;
         window.setTimeout = this.originalSetTimeout;
         window.clearTimeout = this.originalClearTimeout;
@@ -35,19 +33,18 @@ class FakeTimer{
 
 
     tick() {
-        if(!this.installed){
-            throw new Error("Attemping to tick a FakeTimer that has not been installed. Did you forget to call install?");
+        if (!this.installed) {
+            throw new Error("Attemping to tick a FakeTimer that has not been installed. Did you forget to call install?")
         }
-
-
-        while(this.tasks.length){
-            const task = this.tasks.shift();
-
-            const {timeout, due, callback, args} = task;
-            this.refs.delete(timeout);
-
-            this.time = due;
-            callback.apply(undefined, args);
+    
+        while (this.tasks.length) {
+        const task = this.tasks.shift();
+    
+        const { timeout, due, callback, args } = task;
+        this.refs.delete(timeout);
+    
+        this.time = due;
+        callback.apply(undefined, args);
         }
 
     }
@@ -55,24 +52,22 @@ class FakeTimer{
 
     setTimeout(callback, delay, ...args) {
         const timeout = this.nextTimeoutId++;
-        const due = Math.max(0, delay) + this.time;
 
-        const task = {timeout, due, callback, args};
+        const due = Math.max(0, delay) + this.time;
+        const task = { timeout, due, callback, args };
         this.tasks.push(task);
         this.refs.set(timeout, task);
 
-
-        this.tasks.sort((a,b)=>a.due - b.due);
+        this.tasks.sort((a, b) => a.due - b.due);
 
         return timeout;
-
     }
 
     clearTimeout(timeout) {
-        if(this.refs.has(timeout)){
-
+        if (this.refs.has(timeout)) {
             const task = this.refs.get(timeout);
-            this.tasks.splice(this.tasks.indexOf(task),1);
+    
+            this.tasks.splice(this.tasks.indexOf(task), 1);
             this.refs.delete(timeout);
         }
     }
