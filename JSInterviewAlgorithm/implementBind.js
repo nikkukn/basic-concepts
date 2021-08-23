@@ -1,10 +1,14 @@
 // Q - Implement your own bind in the function prototype javascript?
 
 
-Function.prototype.customBind = function(context, ...args) {
-    let self = this;
-    return function(){
-        return self.apply(context, args);
+Function.prototype.myBind = function(){
+    let fn = this;
+    let args = Array.prototype.slice.call(arguments);
+    let object = args.shift();
+
+
+    return function() {
+        return fn.apply(object, args.concat(Array.prototype.slice.call(arguments)))
     }
 }
 
