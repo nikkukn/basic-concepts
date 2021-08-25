@@ -37,3 +37,26 @@ function cyclicSort(list) {
     return list;  
 }
 
+
+//  simple solution
+
+function missingNumber(list){
+    let start = 0;
+    while(start<list.length){
+        let num = list[start];
+
+        if(num<list.length && num!==start){
+            [list[start], list[num]] = [list[num], list[start]];
+        }else {
+            start +=1;
+        }
+    }
+
+    for(let i in list){
+        if(nums[i]!==i){
+            return i;
+        }
+    }
+
+    return nums.length;
+}
